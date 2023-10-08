@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
+		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
 		47DF13872AD27FC200C5140D /* EyesBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */; };
-		47DF13892AD27FC200C5140D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13882AD27FC200C5140D /* ContentView.swift */; };
 		47DF138B2AD27FC300C5140D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47DF138A2AD27FC300C5140D /* Assets.xcassets */; };
 		47DF138E2AD27FC300C5140D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47DF138D2AD27FC300C5140D /* Preview Assets.xcassets */; };
 		47DF13962AD2800400C5140D /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13952AD2800400C5140D /* ReminderView.swift */; };
 		47DF13982AD2801700C5140D /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13972AD2801700C5140D /* SessionManager.swift */; };
 		47DF139A2AD2802C00C5140D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13992AD2802C00C5140D /* HomeView.swift */; };
-		47DF139D2AD2804300C5140D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 47DF139C2AD2804300C5140D /* LaunchAtLogin */; };
 		47DF139F2AD2829B00C5140D /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF139E2AD2829B00C5140D /* MenuBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
+		476881D52AD2FD61000990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		47DF13832AD27FC200C5140D /* EyesBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyesBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesBuddyApp.swift; sourceTree = "<group>"; };
-		47DF13882AD27FC200C5140D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		47DF138A2AD27FC300C5140D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47DF138D2AD27FC300C5140D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		47DF138F2AD27FC300C5140D /* EyesBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EyesBuddy.entitlements; sourceTree = "<group>"; };
@@ -36,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47DF139D2AD2804300C5140D /* LaunchAtLogin in Frameworks */,
+				476881D22AD2FBEE000990AF /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +63,13 @@
 		47DF13852AD27FC200C5140D /* EyesBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				476881D52AD2FD61000990AF /* Info.plist */,
 				47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */,
-				47DF13882AD27FC200C5140D /* ContentView.swift */,
 				47DF13952AD2800400C5140D /* ReminderView.swift */,
 				47DF13972AD2801700C5140D /* SessionManager.swift */,
 				47DF13992AD2802C00C5140D /* HomeView.swift */,
 				47DF139E2AD2829B00C5140D /* MenuBarView.swift */,
+				476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */,
 				47DF138A2AD27FC300C5140D /* Assets.xcassets */,
 				47DF138F2AD27FC300C5140D /* EyesBuddy.entitlements */,
 				47DF138C2AD27FC300C5140D /* Preview Content */,
@@ -100,7 +102,7 @@
 			);
 			name = EyesBuddy;
 			packageProductDependencies = (
-				47DF139C2AD2804300C5140D /* LaunchAtLogin */,
+				476881D12AD2FBEE000990AF /* Sparkle */,
 			);
 			productName = EyesBuddy;
 			productReference = 47DF13832AD27FC200C5140D /* EyesBuddy.app */;
@@ -131,7 +133,7 @@
 			);
 			mainGroup = 47DF137A2AD27FC200C5140D;
 			packageReferences = (
-				47DF139B2AD2804300C5140D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 47DF13842AD27FC200C5140D /* Products */;
 			projectDirPath = "";
@@ -159,11 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47DF13892AD27FC200C5140D /* ContentView.swift in Sources */,
 				47DF13872AD27FC200C5140D /* EyesBuddyApp.swift in Sources */,
 				47DF13982AD2801700C5140D /* SessionManager.swift in Sources */,
 				47DF139F2AD2829B00C5140D /* MenuBarView.swift in Sources */,
 				47DF139A2AD2802C00C5140D /* HomeView.swift in Sources */,
+				476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */,
 				47DF13962AD2800400C5140D /* ReminderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +305,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EyesBuddy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -333,6 +336,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EyesBuddy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eyes Buddy";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -373,21 +377,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		47DF139B2AD2804300C5140D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+		476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
-				kind = exactVersion;
-				version = 5.0.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		47DF139C2AD2804300C5140D /* LaunchAtLogin */ = {
+		476881D12AD2FBEE000990AF /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 47DF139B2AD2804300C5140D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
-			productName = LaunchAtLogin;
+			package = 476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
