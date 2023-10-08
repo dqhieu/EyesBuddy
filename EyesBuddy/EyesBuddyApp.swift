@@ -15,9 +15,6 @@ struct EyesBuddyApp: App {
     }
     MenuBarExtra {
       MenuBarView()
-      Button(action: {}, label: {
-        Text("Button")
-      })
     } label: {
       Label("MyApp", systemImage: "eyes")
     }

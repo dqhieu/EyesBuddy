@@ -12,16 +12,31 @@ struct MenuBarView: View {
   @ObservedObject var sessionManager = SessionManager.shared
   
   var body: some View {
-    Text(sessionManager.remainingSessionTimeString)
-      .font(.largeTitle)
-      .fontDesign(.rounded)
-      .fontWeight(.semibold)
-      .monospacedDigit()
-      .contentTransition(.numericText(countsDown: true))
-      .transaction { transaction in
-        transaction.animation = .default
+    VStack(alignment: .leading, spacing: 24) {
+      Text(sessionManager.remainingSessionTimeString)
+        .font(.largeTitle)
+        .fontDesign(.rounded)
+        .fontWeight(.semibold)
+        .monospacedDigit()
+        .contentTransition(.numericText(countsDown: true))
+        .transaction { transaction in
+          transaction.animation = .default
+        }
+        .foregroundStyle(sessionManager.sessionTimer == nil ? .secondary : .primary)
+      HStack {
+        Button(action: {}, label: {
+          Image(systemName: "gear")
+        })
+        .buttonStyle(PlainButtonStyle())
+        Spacer()
+          .frame(width: 100)
+        Button(action: {}, label: {
+          Image(systemName: "power")
+        })
+        .buttonStyle(PlainButtonStyle())
       }
-      .foregroundStyle(sessionManager.sessionTimer == nil ? .secondary : .primary)
+    }
+    .padding()
   }
 }
 
