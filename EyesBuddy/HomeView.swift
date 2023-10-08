@@ -61,7 +61,7 @@ struct HomeView: View {
       })
       Spacer()
     }
-    .frame(width: 400, height: 300, alignment: .center)
+    .frame(width: 400, height: 240, alignment: .center)
   }
 }
 

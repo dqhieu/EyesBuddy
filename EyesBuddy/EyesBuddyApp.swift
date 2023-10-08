@@ -13,6 +13,8 @@ struct EyesBuddyApp: App {
     WindowGroup {
       ContentView()
     }
+    .windowStyle(.hiddenTitleBar)
+    .windowResizability(.contentSize)
     MenuBarExtra {
       MenuBarView()
     } label: {
