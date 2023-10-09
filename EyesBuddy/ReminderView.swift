@@ -20,12 +20,11 @@ struct ReminderView: View {
       VStack(spacing: 24) {
         Text("You have been looking at this monitor for 20 minutes straits, it's time for your eyes to rest!")
           .font(.largeTitle)
-        Text("The 20-20-20 rule: every 20 minutes, shift your eyes to look at an object at least 20 feet away, for at least 20 seconds")
+        Text("For every 20 minutes, shift your eyes to look at an object at least 20 feet away, for at least 20 seconds")
           .multilineTextAlignment(.center)
           .lineLimit(0)
           .font(.title)
           .foregroundStyle(.primary)
-          .fontWeight(.light)
           .italic()
         HStack {
           Text("This screen will dismiss after")
@@ -35,7 +34,6 @@ struct ReminderView: View {
           Text(sessionManager.remainingRelaxSessionTimeString)
             .font(.title)
             .foregroundStyle(.secondary)
-            .fontWeight(.light)
             .monospacedDigit()
             .contentTransition(.numericText(countsDown: true))
             .animation(.linear, value: sessionManager.remainingRelaxSessionTimeString)
