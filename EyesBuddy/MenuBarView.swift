@@ -11,42 +11,68 @@ struct MenuBarView: View {
   
   @Environment(\.dismiss) var dismiss
   @ObservedObject var sessionManager = SessionManager.shared
+  @Namespace var namespace
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 24) {
+    VStack(spacing: 8) {
       HStack {
-        Text(sessionManager.remainingSessionTimeString)
-          .font(.largeTitle)
-          .fontDesign(.rounded)
-          .fontWeight(.semibold)
-          .monospacedDigit()
-          .contentTransition(.numericText(countsDown: true))
-          .transaction { transaction in
-            transaction.animation = .default
-          }
-        Spacer()
-        Button(action: {
-          if sessionManager.sessionTimer == nil {
-            sessionManager.startSession()
-          } else {
-            sessionManager.stopSession()
-          }
-        }, label: {
-          if #available(macOS 14, *) {
-            Image(systemName: sessionManager.sessionTimer == nil ? "play.circle" : "stop.circle.fill")
-              .imageScale(.large)
-              .contentTransition(.symbolEffect(.replace))
-          } else {
-            Image(systemName: sessionManager.sessionTimer == nil ? "play.circle" : "stop.circle.fill")
-              .imageScale(.large)
-          }
-        })
-        .buttonStyle(PlainButtonStyle())
+        if sessionManager.sessionTimer != nil {
+          Text(sessionManager.remainingSessionTimeString)
+            .font(.largeTitle)
+            .fontDesign(.rounded)
+            .fontWeight(.semibold)
+            .monospacedDigit()
+            .contentTransition(.numericText(countsDown: true))
+            .transaction { transaction in
+              transaction.animation = .default
+            }
+          Button(action: {
+            withAnimation {
+              sessionManager.stopSession()
+            }
+          }, label: {
+            if #available(macOS 14, *) {
+              Image(systemName: "stop.circle")
+                .imageScale(.large)
+                .contentTransition(.symbolEffect(.replace))
+            } else {
+              Image(systemName: "stop.circle")
+                .imageScale(.large)
+            }
+          })
+          .buttonStyle(PlainButtonStyle())
+          .matchedGeometryEffect(id: "button", in: namespace)
+        } else {
+          Button(action: {
+            withAnimation {
+              sessionManager.startSession()
+            }
+          }, label: {
+            HStack {
+              if #available(macOS 14, *) {
+                Image(systemName: "play.circle")
+                  .imageScale(.large)
+                  .contentTransition(.symbolEffect(.replace))
+                  .matchedGeometryEffect(id: "button", in: namespace)
+              } else {
+                Image(systemName: "play.circle")
+                  .imageScale(.large)
+                  .matchedGeometryEffect(id: "button", in: namespace)
+              }
+              Text("Start session")
+                .font(.title3)
+            }
+          })
+          .buttonStyle(PlainButtonStyle())
+        }
       }
+      .frame(width: 140, height: 40)
+      .padding(8)
+      .background(in: .rect(cornerRadius: 24, style: .continuous))
       HStack {
         if #available(macOS 14.0, *) {
           SettingsLink{
-            Image(systemName: "gear")
+            Image(systemName: "gearshape")
               .imageScale(.large)
           }
           .keyboardShortcut(",", modifiers: .command)
@@ -68,12 +94,11 @@ struct MenuBarView: View {
             }
             
           }, label: {
-            Image(systemName: "gear")
+            Image(systemName: "gearshape")
               .imageScale(.large)
           })
           .buttonStyle(PlainButtonStyle())
         }
-        
         Spacer()
         Button(action: {
           NSApplication.shared.terminate(nil)
@@ -83,9 +108,10 @@ struct MenuBarView: View {
         })
         .buttonStyle(PlainButtonStyle())
       }
+      .foregroundStyle(.secondary)
     }
     .padding()
-    .frame(width: 140)
+    .frame(width: 180)
   }
 }
 
