@@ -322,6 +322,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
 				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -353,6 +354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
 				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
