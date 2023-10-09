@@ -59,7 +59,7 @@ struct SettingsView: View {
       }
       
       VStack(spacing: 12) {
-        Image("AppIcon")
+        Image("MacAppIcon")
           .resizable()
           .scaledToFit()
           .frame(width: 64, height: 64)
