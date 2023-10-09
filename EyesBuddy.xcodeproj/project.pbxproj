@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
 		476881D52AD2FD61000990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		47DF13832AD27FC200C5140D /* EyesBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyesBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47DF13832AD27FC200C5140D /* Eyes Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesBuddyApp.swift; sourceTree = "<group>"; };
 		47DF138A2AD27FC300C5140D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47DF138D2AD27FC300C5140D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		47DF13842AD27FC200C5140D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				47DF13832AD27FC200C5140D /* EyesBuddy.app */,
+				47DF13832AD27FC200C5140D /* Eyes Buddy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 				476881D12AD2FBEE000990AF /* Sparkle */,
 			);
 			productName = EyesBuddy;
-			productReference = 47DF13832AD27FC200C5140D /* EyesBuddy.app */;
+			productReference = 47DF13832AD27FC200C5140D /* Eyes Buddy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -299,7 +299,7 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -316,7 +316,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -330,7 +330,7 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -347,7 +347,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};

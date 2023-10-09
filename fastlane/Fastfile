@@ -1,0 +1,46 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:macos)
+
+platform :macos do
+  desc "Create a notarized build of the macOS App"
+  lane :notarized do
+    
+    increment_build_number(
+      xcodeproj: "EyesBuddy.xcodeproj"
+    )
+
+    build_mac_app(
+      # scheme: 'Project', # Skip if you only have a single scheme
+      configuration: 'Release',
+      export_method: "developer-id",
+      xcargs: '-allowProvisioningUpdates' # Needed for automatic signing
+    )
+
+    notarize(
+      asc_provider: "BH46VD9229", 
+      username: 'dqhieu13@gmail.com',
+      print_log: true,
+      package: './Eyes Buddy.app',
+      verbose: true # Useful for showing notarization logs if it fails 
+    )
+
+  end
+
+  after_all do |lane|
+    say "done"
+  end
+end
