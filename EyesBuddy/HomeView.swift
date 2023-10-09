@@ -12,17 +12,6 @@ import Sparkle
 struct HomeView: View {
   
   @StateObject var sessionManager = SessionManager.shared
-  @AppStorage("autoStartNewSession") var autoStartNewSession = false
-  @AppStorage("startAtLogin") var startAtLogin = false
-  private let updater: SPUUpdater
-  @State private var automaticallyChecksForUpdates: Bool
-  @State private var automaticallyDownloadsUpdates: Bool
-  
-  init(updater: SPUUpdater) {
-    self.updater = updater
-    self.automaticallyChecksForUpdates = updater.automaticallyChecksForUpdates
-    self.automaticallyDownloadsUpdates = updater.automaticallyDownloadsUpdates
-  }
   
   var body: some View {
     VStack {
@@ -48,29 +37,9 @@ struct HomeView: View {
       }, label: {
         Text(sessionManager.sessionTimer == nil ? "Start session" : "Stop session")
       })
-      VStack(alignment: .leading, content: {
-        Toggle("Automatically start new session when the current session ends", isOn: $autoStartNewSession)
-        Toggle("Automatically check for updates", isOn: $automaticallyChecksForUpdates)
-          .onChange(of: automaticallyChecksForUpdates) { newValue in
-            updater.automaticallyChecksForUpdates = newValue
-          }
-        
-        Toggle("Automatically download updates", isOn: $automaticallyDownloadsUpdates)
-          .disabled(!automaticallyChecksForUpdates)
-          .onChange(of: automaticallyDownloadsUpdates) { newValue in
-            updater.automaticallyDownloadsUpdates = newValue
-          }
-      })
       
       Spacer()
         .frame(height: 24)
-      Button(action: {
-        sessionManager.stopSession()
-        sessionManager.showReminderWindow()
-        sessionManager.startRelaxSession()
-      }, label: {
-        Text("Show reminder")
-      })
       Button(action: {
         NSApplication.shared.terminate(nil)
       }, label: {
@@ -83,5 +52,5 @@ struct HomeView: View {
 }
 
 #Preview {
-  HomeView(updater: SPUStandardUpdaterController(startingUpdater: false, updaterDelegate: nil, userDriverDelegate: nil).updater)
+  HomeView()
 }

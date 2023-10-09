@@ -44,19 +44,36 @@ struct MenuBarView: View {
         .buttonStyle(PlainButtonStyle())
       }
       HStack {
-        Button(action: {
-          dismiss()
-          let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
-          let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
-          let task = Process()
-          task.launchPath = "/usr/bin/open"
-          task.arguments = [path]
-          task.launch()
-        }, label: {
-          Image(systemName: "gear")
-            .imageScale(.large)
-        })
-        .buttonStyle(PlainButtonStyle())
+        if #available(macOS 14.0, *) {
+          SettingsLink{
+            Image(systemName: "gear")
+              .imageScale(.large)
+          }
+          .keyboardShortcut(",", modifiers: .command)
+          
+          .buttonStyle(PlainButtonStyle())
+        } else {
+          Button(action: {
+            dismiss()
+            //          let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
+            //          let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
+            //          let task = Process()
+            //          task.launchPath = "/usr/bin/open"
+            //          task.arguments = [path]
+            //          task.launch()
+            if #available(macOS 13, *) {
+              NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            } else {
+              NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+            }
+            
+          }, label: {
+            Image(systemName: "gear")
+              .imageScale(.large)
+          })
+          .buttonStyle(PlainButtonStyle())
+        }
+        
         Spacer()
         Button(action: {
           NSApplication.shared.terminate(nil)

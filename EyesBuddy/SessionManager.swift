@@ -22,9 +22,7 @@ class SessionManager: ObservableObject {
   @Published var relaxTimer: Timer?
   @Published var remainingRelaxTime = RELAX_DURATION
   @Published var remainingRelaxSessionTimeString: String = "20"
-  
-  @AppStorage("autoStartNewSession") var autoStartNewSession = false
-  
+    
   var relaxWindow: NSWindow?
   
   static let shared = SessionManager()
@@ -82,9 +80,7 @@ class SessionManager: ObservableObject {
     remainingSessionTime = SESSION_DURATION
     remainingRelaxTime = RELAX_DURATION
     calculateRemainingRelaxSessionTimeString()
-    if autoStartNewSession {
-      startSession()
-    }
+    startSession()
   }
   
   func calculateRemainingRelaxSessionTimeString() {

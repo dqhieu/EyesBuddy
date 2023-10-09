@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
 		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
+		4780CC6D2AD4233A00178571 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780CC6C2AD4233A00178571 /* SettingsView.swift */; };
 		47DF13872AD27FC200C5140D /* EyesBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */; };
 		47DF138B2AD27FC300C5140D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47DF138A2AD27FC300C5140D /* Assets.xcassets */; };
 		47DF138E2AD27FC300C5140D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47DF138D2AD27FC300C5140D /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
 		476881D52AD2FD61000990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4780CC6C2AD4233A00178571 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		47DF13832AD27FC200C5140D /* Eyes Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesBuddyApp.swift; sourceTree = "<group>"; };
 		47DF138A2AD27FC300C5140D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				47DF13972AD2801700C5140D /* SessionManager.swift */,
 				47DF13992AD2802C00C5140D /* HomeView.swift */,
 				47DF139E2AD2829B00C5140D /* MenuBarView.swift */,
+				4780CC6C2AD4233A00178571 /* SettingsView.swift */,
 				476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */,
 				47DF138A2AD27FC300C5140D /* Assets.xcassets */,
 				47DF138F2AD27FC300C5140D /* EyesBuddy.entitlements */,
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4780CC6D2AD4233A00178571 /* SettingsView.swift in Sources */,
 				47DF13872AD27FC200C5140D /* EyesBuddyApp.swift in Sources */,
 				47DF13982AD2801700C5140D /* SessionManager.swift in Sources */,
 				47DF139F2AD2829B00C5140D /* MenuBarView.swift in Sources */,

@@ -11,6 +11,8 @@ import Sparkle
 @main
 struct EyesBuddyApp: App {
   
+  @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  
   private let updaterController: SPUStandardUpdaterController
   
   init() {
@@ -21,7 +23,7 @@ struct EyesBuddyApp: App {
   
   var body: some Scene {
     WindowGroup {
-      HomeView(updater: updaterController.updater)
+      HomeView()
     }
     .windowStyle(.hiddenTitleBar)
     .windowResizability(.contentSize)
@@ -37,5 +39,20 @@ struct EyesBuddyApp: App {
       Label("MyApp", systemImage: "eyes")
     }
     .menuBarExtraStyle(.window)
+    Settings {
+      SettingsView(updater: updaterController.updater)
+    }
   }
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+  //  func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+  //    NSApplication.shared.hideOtherApplications(nil)
+  //    return true
+  //  }
+  //
+  //  func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+  //    return .terminateCancel
+  //  }
+  
 }
