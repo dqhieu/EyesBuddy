@@ -42,5 +42,8 @@ platform :macos do
 
   after_all do |lane|
     say "done"
+    commit_version_bump(message: 'Version Bump via Fastlane', force: true)
+
+    push_to_git_remote
   end
 end
