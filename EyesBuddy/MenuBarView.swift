@@ -112,6 +112,7 @@ struct MenuBarView: View {
     }
     .padding()
     .frame(width: 180)
+    .fontDesign(.rounded)
   }
 }
 

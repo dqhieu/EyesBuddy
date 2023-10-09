@@ -23,7 +23,7 @@ struct EyesBuddyApp: App {
   
   var body: some Scene {
     WindowGroup {
-      HomeView()
+      MenuBarView()
     }
     .windowStyle(.hiddenTitleBar)
     .windowResizability(.contentSize)
