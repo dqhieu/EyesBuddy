@@ -23,15 +23,15 @@ struct EyesBuddyApp: App {
   
   var body: some Scene {
     WindowGroup {
-      MenuBarView()
+      HomeView()
     }
     .windowStyle(.hiddenTitleBar)
     .windowResizability(.contentSize)
     .commands {
+      CommandGroup(replacing: .newItem, addition: { })
       CommandGroup(after: .appInfo) {
         CheckForUpdatesView(updater: updaterController.updater)
       }
-      
     }
     MenuBarExtra {
       MenuBarView()
@@ -54,5 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   //  func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
   //    return .terminateCancel
   //  }
+  
+  func applicationWillFinishLaunching(_ notification: Notification) {
+    NSWindow.allowsAutomaticWindowTabbing = false //<-- This is the key!
+  }
   
 }
