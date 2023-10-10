@@ -11,6 +11,7 @@ import Sparkle
 struct SettingsView: View {
   
   @AppStorage("autoStartSessionWhenLaunch") var autoStartSessionWhenLaunch = false
+  @AppStorage("autoRestartSessionWhenUnlock") var autoRestartSessionWhenUnlock = true
   let sessionManager = SessionManager.shared
   
   private let updater: SPUUpdater
@@ -27,6 +28,7 @@ struct SettingsView: View {
     TabView {
       VStack(alignment: .leading) {
         Toggle("Automatically start session when app is opened", isOn: $autoStartSessionWhenLaunch)
+        Toggle("Automatically restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
       }
       .tabItem {
         Label("General", systemImage: "gearshape")

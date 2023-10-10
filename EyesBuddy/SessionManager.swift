@@ -22,10 +22,32 @@ class SessionManager: ObservableObject {
   @Published var relaxTimer: Timer?
   @Published var remainingRelaxTime = RELAX_DURATION
   @Published var remainingRelaxSessionTimeString: String = "20"
+  
+  @AppStorage("autoRestartSessionWhenUnlock") var autoRestartSessionWhenUnlock = true
     
   var relaxWindow: NSWindow?
   
   static let shared = SessionManager()
+  
+  let dnc = DistributedNotificationCenter.default()
+  
+  init() {
+    dnc.addObserver(forName: .init("com.apple.screenIsLocked"), object: nil, queue: .main) { [weak self] _ in
+      NSLog("Screen Locked")
+      guard let this = self else { return }
+      if this.autoRestartSessionWhenUnlock {
+        this.stopSession()
+      }
+    }
+    
+    dnc.addObserver(forName: .init("com.apple.screenIsUnlocked"), object: nil, queue: .main) { [weak self] _ in
+      NSLog("Screen Unlocked")
+      guard let this = self else { return }
+      if this.autoRestartSessionWhenUnlock {
+        this.startSession()
+      }
+    }
+  }
   
   func startSession() {
     sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
