@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Sparkle
+import TelemetryClient
 
 @main
 struct EyesBuddyApp: App {
@@ -21,6 +22,8 @@ struct EyesBuddyApp: App {
     // If you want to start the updater manually, pass false to startingUpdater and call .startUpdater() later
     // This is where you can also pass an updater delegate if you need one
     updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+    let configuration = TelemetryManagerConfiguration(appID: "2E6FCBEB-E2B0-4675-81D6-E74BF1ECB09E")
+    TelemetryManager.initialize(with: configuration)
     if autoStartSessionWhenLaunch, SessionManager.shared.sessionTimer == nil {
       SessionManager.shared.startSession()
     }

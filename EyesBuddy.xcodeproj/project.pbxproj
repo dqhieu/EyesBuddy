@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 4732870B2AD4CE4300C13ADE /* TelemetryClient */; };
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
 		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
 		4780CC6D2AD4233A00178571 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780CC6C2AD4233A00178571 /* SettingsView.swift */; };
@@ -40,6 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				476881D22AD2FBEE000990AF /* Sparkle in Frameworks */,
+				4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +108,7 @@
 			name = EyesBuddy;
 			packageProductDependencies = (
 				476881D12AD2FBEE000990AF /* Sparkle */,
+				4732870B2AD4CE4300C13ADE /* TelemetryClient */,
 			);
 			productName = EyesBuddy;
 			productReference = 47DF13832AD27FC200C5140D /* Eyes Buddy.app */;
@@ -137,6 +140,7 @@
 			mainGroup = 47DF137A2AD27FC200C5140D;
 			packageReferences = (
 				476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */,
+				4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */,
 			);
 			productRefGroup = 47DF13842AD27FC200C5140D /* Products */;
 			projectDirPath = "";
@@ -383,6 +387,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TelemetryDeck/SwiftClient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
@@ -394,6 +406,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4732870B2AD4CE4300C13ADE /* TelemetryClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */;
+			productName = TelemetryClient;
+		};
 		476881D12AD2FBEE000990AF /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */;
