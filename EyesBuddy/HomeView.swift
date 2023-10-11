@@ -13,6 +13,7 @@ struct HomeView: View {
   
   @ObservedObject var sessionManager = SessionManager.shared
   @Namespace var namespace
+  @State var showAlert = false
   
   var body: some View {
     VStack(spacing: 8) {
@@ -45,8 +46,12 @@ struct HomeView: View {
           .matchedGeometryEffect(id: "button", in: namespace)
         } else {
           Button(action: {
-            withAnimation {
-              sessionManager.startSession()
+            if sessionManager.isBetaExpired {
+              showAlert = true
+            } else {
+              withAnimation {
+                sessionManager.startSession()
+              }
             }
           }, label: {
             HStack {
@@ -65,6 +70,13 @@ struct HomeView: View {
             }
           })
           .buttonStyle(PlainButtonStyle())
+          .alert("Your beta has expired. Please upgrade to newer version", isPresented: $showAlert) {
+            Button {
+              
+            } label: {
+              Text("OK")
+            }
+          }
         }
       }
       .frame(width: 140, height: 40)

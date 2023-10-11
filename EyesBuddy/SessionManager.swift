@@ -158,4 +158,12 @@ class SessionManager: ObservableObject {
       self?.relaxWindow = nil
     }
   }
+  
+  var isBetaExpired: Bool {
+    let dateString = "2023/10/26"
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy/MM/dd"
+    let date = dateFormatter.date(from: dateString) ?? Date()
+    return date <= .now
+  }
 }
