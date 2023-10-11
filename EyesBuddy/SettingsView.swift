@@ -33,17 +33,17 @@ struct SettingsView: View {
       .tabItem {
         Label("General", systemImage: "gearshape")
       }
-      VStack {
+//      VStack {
 //        Picker("Start timer sound", selection: .constant("")) {
 //          Text("one")
 //          Text("two")
 //        }
 //        .frame(width: 250)
-        Text("Coming soon")
-      }
-      .tabItem {
-        Label("Sound", systemImage: "speaker.wave.2")
-      }
+//        Text("Coming soon")
+//      }
+//      .tabItem {
+//        Label("Sound", systemImage: "speaker.wave.2")
+//      }
       VStack(alignment: .leading) {
         Toggle("Automatically check for updates", isOn: $automaticallyChecksForUpdates)
           .onChange(of: automaticallyChecksForUpdates) { newValue in
