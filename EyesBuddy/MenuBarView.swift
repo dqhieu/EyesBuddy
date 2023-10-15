@@ -23,10 +23,6 @@ struct MenuBarView: View {
             .fontDesign(.rounded)
             .fontWeight(.semibold)
             .monospacedDigit()
-            .contentTransition(.numericText(countsDown: true))
-            .transaction { transaction in
-              transaction.animation = .default
-            }
           Button(action: {
             withAnimation {
               sessionManager.stopSession()

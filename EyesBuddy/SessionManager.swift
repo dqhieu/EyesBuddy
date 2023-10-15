@@ -35,9 +35,7 @@ class SessionManager: ObservableObject {
     dnc.addObserver(forName: .init("com.apple.screenIsLocked"), object: nil, queue: .main) { [weak self] _ in
       NSLog("Screen Locked")
       guard let this = self else { return }
-      if this.autoRestartSessionWhenUnlock {
-        this.stopSession()
-      }
+      this.stopSession()
     }
     
     dnc.addObserver(forName: .init("com.apple.screenIsUnlocked"), object: nil, queue: .main) { [weak self] _ in
