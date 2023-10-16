@@ -12,11 +12,28 @@ struct SettingsView: View {
   
   @AppStorage("autoStartSessionWhenLaunch") var autoStartSessionWhenLaunch = false
   @AppStorage("autoRestartSessionWhenUnlock") var autoRestartSessionWhenUnlock = true
+  @AppStorage("sessionDuration") var sessionDuration = 20 // minutes
+  @AppStorage("relaxDuration") var relaxDuration = 20 // seconds
+  
   let sessionManager = SessionManager.shared
   
   private let updater: SPUUpdater
   @State private var automaticallyChecksForUpdates: Bool
   @State private var automaticallyDownloadsUpdates: Bool
+  
+  var sessionDurations: [Int] {
+    #if DEBUG
+    return [1, 10, 20, 30, 45, 60]
+    #endif
+    return [10, 20, 30, 45, 60]
+  }
+  
+  var relaxDurations: [Int] {
+    #if DEBUG
+    return [20, 30, 45, 60]
+    #endif
+    return [10, 20, 30, 45, 60]
+  }
   
   init(updater: SPUUpdater) {
     self.updater = updater
@@ -29,6 +46,19 @@ struct SettingsView: View {
       VStack(alignment: .leading) {
         Toggle("Automatically start session when app is opened", isOn: $autoStartSessionWhenLaunch)
         Toggle("Automatically restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
+        Picker("Session duration", selection: $sessionDuration) {
+          ForEach(sessionDurations, id: \.self) { duration in
+            Text("\(duration) minutes").tag(duration)
+              
+          }
+        }
+        .frame(width: 240)
+        Picker("Relax duration", selection: $relaxDuration) {
+          ForEach(relaxDurations, id: \.self) { duration in
+            Text("\(duration) seconds").tag(duration)
+          }
+        }
+        .frame(width: 240)
       }
       .tabItem {
         Label("General", systemImage: "gearshape")

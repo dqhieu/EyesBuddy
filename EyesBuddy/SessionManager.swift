@@ -10,20 +10,19 @@ import AppKit
 import Cocoa
 import SwiftUI
 
-let SESSION_DURATION = 60 * 20 // 5 minutes
-let RELAX_DURATION = 20 // 20 seconds
-
 class SessionManager: ObservableObject {
   
   @Published var sessionTimer: Timer?
-  @Published var remainingSessionTime = SESSION_DURATION
+  @Published var remainingSessionTime = 60 * 20
   @Published var remainingSessionTimeString: String = "20:00"
   
   @Published var relaxTimer: Timer?
-  @Published var remainingRelaxTime = RELAX_DURATION
+  @Published var remainingRelaxTime = 20
   @Published var remainingRelaxSessionTimeString: String = "20"
   
   @AppStorage("autoRestartSessionWhenUnlock") var autoRestartSessionWhenUnlock = true
+  @AppStorage("sessionDuration") var sessionDuration = 20 // minutes
+  @AppStorage("relaxDuration") var relaxDuration = 20 // seconds
     
   var relaxWindow: NSWindow?
   
@@ -45,9 +44,18 @@ class SessionManager: ObservableObject {
         this.startSession()
       }
     }
+    resetRemainingTime()
+  }
+  
+  func resetRemainingTime() {
+    remainingSessionTime = sessionDuration * 60
+    remainingRelaxTime = relaxDuration
+    remainingSessionTimeString = Utils.calculateRemainingSessionTimeString(remainingSessionTime: remainingSessionTime)
+    remainingRelaxSessionTimeString = "\(remainingRelaxTime)"
   }
   
   func startSession() {
+    resetRemainingTime()
     sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
   }
   
@@ -64,24 +72,16 @@ class SessionManager: ObservableObject {
   func stopSession() {
     sessionTimer?.invalidate()
     sessionTimer = nil
-    remainingSessionTime = SESSION_DURATION
-    remainingRelaxTime = RELAX_DURATION
+    resetRemainingTime()
     calculateRemainingSessionTimeString()
   }
   
   func calculateRemainingSessionTimeString() {
-    var minute = "\((remainingSessionTime / 60))"
-    if minute.count == 1 {
-      minute = "0" + minute
-    }
-    var second = "\(remainingSessionTime % 60)"
-    if second.count == 1 {
-      second = "0" + second
-    }
-    remainingSessionTimeString = minute + ":" + second
+    remainingSessionTimeString = Utils.calculateRemainingSessionTimeString(remainingSessionTime: remainingSessionTime)
   }
   
   func startRelaxSession() {
+    resetRemainingTime()
     relaxTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(relaxTimerTick), userInfo: nil, repeats: true)
   }
   
@@ -97,8 +97,7 @@ class SessionManager: ObservableObject {
   func stopRelaxSession() {
     relaxTimer?.invalidate()
     relaxTimer = nil
-    remainingSessionTime = SESSION_DURATION
-    remainingRelaxTime = RELAX_DURATION
+    resetRemainingTime()
     calculateRemainingRelaxSessionTimeString()
     startSession()
   }
@@ -165,3 +164,18 @@ class SessionManager: ObservableObject {
     return date <= .now
   }
 }
+
+class Utils {
+  static func calculateRemainingSessionTimeString(remainingSessionTime: Int) -> String {
+    var minute = "\((remainingSessionTime / 60))"
+    if minute.count == 1 {
+      minute = "0" + minute
+    }
+    var second = "\(remainingSessionTime % 60)"
+    if second.count == 1 {
+      second = "0" + second
+    }
+    return minute + ":" + second
+  }
+}
+
