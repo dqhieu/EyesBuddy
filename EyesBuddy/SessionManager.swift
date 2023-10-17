@@ -119,6 +119,7 @@ class SessionManager: ObservableObject {
     
     // Set the window level to be above all other windows
     window.level = .screenSaver
+    window.collectionBehavior = [.canJoinAllSpaces, .canJoinAllApplications]
     
     // Set the window frame to occupy the whole screen
     window.setFrame(NSScreen.main?.frame ?? CGRect(x: 0, y: 0, width: 500, height: 500), display: true)
