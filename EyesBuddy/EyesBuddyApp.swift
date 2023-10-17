@@ -54,17 +54,13 @@ struct EyesBuddyApp: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-  //  func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-  //    NSApplication.shared.hideOtherApplications(nil)
-  //    return true
-  //  }
-  //
-  //  func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-  //    return .terminateCancel
-  //  }
+  func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+    NSApp.setActivationPolicy(.accessory)
+    return false
+  }  
   
   func applicationWillFinishLaunching(_ notification: Notification) {
-    NSWindow.allowsAutomaticWindowTabbing = false //<-- This is the key!
+    NSWindow.allowsAutomaticWindowTabbing = false
   }
   
 }
