@@ -24,7 +24,7 @@ class SessionManager: ObservableObject {
   @AppStorage("sessionDuration") var sessionDuration = 20 // minutes
   @AppStorage("relaxDuration") var relaxDuration = 20 // seconds
     
-  var relaxWindow: NSWindow?
+  var relaxWindows: [NSWindow] = []
   
   static let shared = SessionManager()
   
@@ -90,7 +90,7 @@ class SessionManager: ObservableObject {
     calculateRemainingRelaxSessionTimeString()
     if remainingRelaxTime <= 0 {
       stopRelaxSession()
-      dismissReminderWindow()
+      dismissReminderWindows()
     }
   }
   
@@ -108,52 +108,55 @@ class SessionManager: ObservableObject {
   
   
   func showReminderWindow() {
-    let vc = NSHostingController(rootView: ReminderView(dismissNowAction: { [weak self] in
-      self?.stopRelaxSession()
-      self?.dismissReminderWindow()
-    }))
-    let window = NSWindow(contentViewController: vc)
-    
-    // Set the window style mask to enable full screen
-    window.styleMask = [.borderless, .fullSizeContentView]
-    
-    // Set the window level to be above all other windows
-    window.level = .screenSaver
-    window.collectionBehavior = [.canJoinAllSpaces, .canJoinAllApplications]
-    
-    // Set the window frame to occupy the whole screen
-    window.setFrame(NSScreen.main?.frame ?? CGRect(x: 0, y: 0, width: 500, height: 500), display: true)
-    
-    NSApplication.shared.presentationOptions = [
-      .hideMenuBar,
-      .hideDock
-    ]
-    
-    window.alphaValue = 0
-    
-    NSAnimationContext.runAnimationGroup { context in
-      context.duration = 0.5
-      window.animator().alphaValue = 1
-    } completionHandler: {
+    relaxWindows = []
+    print("🍾 NSScreen.screens.count = \(NSScreen.screens.count)")
+    for screen in NSScreen.screens {
+      let vc = NSHostingController(rootView: ReminderView(dismissNowAction: { [weak self] in
+        self?.dismissReminderWindows()
+        self?.stopRelaxSession()
+      }))
+      let window = NSWindow(contentViewController: vc)
       
+      // Set the window style mask to enable full screen
+      window.styleMask = [.borderless, .fullSizeContentView]
+      
+      // Set the window level to be above all other windows
+      window.level = .screenSaver
+      window.collectionBehavior = [.canJoinAllSpaces, .canJoinAllApplications]
+      
+      // Set the window frame to occupy the whole screen
+      window.setFrame(screen.frame, display: true)
+      
+      NSApplication.shared.presentationOptions = [
+        .hideMenuBar,
+        .hideDock
+      ]
+      
+      window.alphaValue = 0
+      
+      NSAnimationContext.runAnimationGroup { context in
+        context.duration = 0.5
+        window.animator().alphaValue = 1
+      } completionHandler: {
+        
+      }
+      
+      // Show the window
+      window.orderFront(nil)
+      relaxWindows.append(window)
     }
-    
-    // Show the window
-    window.orderFront(nil)
-    
-    relaxWindow = window
   }
   
-  func dismissReminderWindow() {
+  func dismissReminderWindows() {
     NSApplication.shared.presentationOptions = []
     
-    NSAnimationContext.runAnimationGroup { context in
+    NSAnimationContext.runAnimationGroup { [weak self] context in
       context.duration = 0.5
-      relaxWindow?.animator().alphaValue = 0
-    } completionHandler: { [weak self] in
       
-      self?.relaxWindow?.close()
-      self?.relaxWindow = nil
+      self?.relaxWindows.forEach { $0.animator().alphaValue = 0 }
+    } completionHandler: { [weak self] in
+      self?.relaxWindows.forEach { $0.close() }
+      self?.relaxWindows = []
     }
   }
   
