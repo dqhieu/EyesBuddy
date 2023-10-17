@@ -78,6 +78,7 @@ struct MenuBarView: View {
       .background(in: .rect(cornerRadius: 24, style: .continuous))
       HStack {
         Button(action: {
+          dismiss()
 //          NSApp.setActivationPolicy(.regular)
           NSApp.unhide(self)
           let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
