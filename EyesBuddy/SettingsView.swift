@@ -85,6 +85,15 @@ struct SettingsView: View {
           .onChange(of: automaticallyDownloadsUpdates) { newValue in
             updater.automaticallyDownloadsUpdates = newValue
           }
+        HStack {
+          Spacer()
+          Button {
+            updater.checkForUpdates()
+          } label: {
+            Text("Check for Updates")
+          }
+          Spacer()
+        }
       }
       .tabItem {
         Label("Updates", systemImage: "arrow.triangle.2.circlepath.circle")

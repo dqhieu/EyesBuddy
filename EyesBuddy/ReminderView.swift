@@ -18,7 +18,7 @@ struct ReminderView: View {
         .resizable()
         .aspectRatio(contentMode: .fill)
       VStack(spacing: 24) {
-        Text("You have been looking at this monitor for 20 minutes straits, it's time for your eyes to rest!")
+        Text("You've been staring at this monitor for 20 minutes. It's time to give your eyes a break!")
           .font(.largeTitle)
         Text("For every 20 minutes, shift your eyes to look at an object at least 20 feet away, for at least 20 seconds")
           .multilineTextAlignment(.center)
