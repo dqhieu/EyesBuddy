@@ -80,18 +80,12 @@ struct MenuBarView: View {
         Button(action: {
 //          NSApp.setActivationPolicy(.regular)
           NSApp.unhide(self)
-          
-          if let wnd = NSApp.windows.first {
-            wnd.makeKeyAndOrderFront(self)
-            wnd.setIsVisible(true)
-          } else {
-            let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
-            let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
-            let task = Process()
-            task.launchPath = "/usr/bin/open"
-            task.arguments = [path]
-            task.launch()
-          }
+          let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
+          let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
+          let task = Process()
+          task.launchPath = "/usr/bin/open"
+          task.arguments = [path]
+          task.launch()
         }, label: {
           Image(systemName: "arrow.down.backward.toptrailing.rectangle")
             .imageScale(.large)
