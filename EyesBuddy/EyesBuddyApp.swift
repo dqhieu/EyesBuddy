@@ -54,10 +54,15 @@ struct EyesBuddyApp: App {
 }
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+  
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    TelemetryManager.send("applicationDidFinishLaunching")
+  }
+  
   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
     NSApp.setActivationPolicy(.accessory)
     return false
-  }  
+  }
   
   func applicationWillFinishLaunching(_ notification: Notification) {
     NSWindow.allowsAutomaticWindowTabbing = false
