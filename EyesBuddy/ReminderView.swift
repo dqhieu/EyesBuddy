@@ -12,13 +12,15 @@ struct ReminderView: View {
   @ObservedObject var sessionManager = SessionManager.shared
   var dismissNowAction: () -> Void
   
+  @AppStorage("sessionDuration") var sessionDuration = 20
+  
   var body: some View {
     ZStack {
       Image("background")
         .resizable()
         .aspectRatio(contentMode: .fill)
       VStack(spacing: 24) {
-        Text("You've been staring at this monitor for 20 minutes. It's time to give your eyes a break!")
+        Text("You've been staring at this monitor for \(sessionDuration) minutes. It's time to give your eyes a break!")
           .font(.largeTitle)
         Text("For every 20 minutes, shift your eyes to look at an object at least 20 feet away, for at least 20 seconds")
           .multilineTextAlignment(.center)
