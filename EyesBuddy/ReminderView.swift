@@ -27,7 +27,7 @@ struct ReminderView: View {
           .foregroundStyle(.primary)
           .italic()
         HStack {
-          Text("This screen will dismiss after")
+          Text("This screen will be dismissed after")
             .font(.title)
             .foregroundStyle(.secondary)
             .fontWeight(.light)
