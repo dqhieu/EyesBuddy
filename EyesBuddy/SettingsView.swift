@@ -43,22 +43,51 @@ struct SettingsView: View {
   
   var body: some View {
     TabView {
-      VStack(alignment: .leading) {
-        Toggle("Automatically start session when app is opened", isOn: $autoStartSessionWhenLaunch)
-        Toggle("Automatically restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
-        Picker("Session duration", selection: $sessionDuration) {
-          ForEach(sessionDurations, id: \.self) { duration in
-            Text("\(duration) minutes").tag(duration)
-              
+      GroupBox {
+        VStack {
+          HStack {
+            Text("Start session when app is opened")
+            Spacer()
+            Toggle("Start session when app is opened", isOn: $autoStartSessionWhenLaunch)
+              .toggleStyle(.switch)
+              .labelsHidden()
+          }
+          Divider()
+          HStack {
+            Text("Restart session when screen is unlocked")
+            Spacer()
+            Toggle("Restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
+              .toggleStyle(.switch)
+              .labelsHidden()
+          }
+          Divider()
+          HStack {
+            Text("Session duration")
+            Spacer()
+            Picker("Session duration", selection: $sessionDuration) {
+              ForEach(sessionDurations, id: \.self) { duration in
+                Text("\(duration) minutes").tag(duration)
+              }
+            }
+            .pickerStyle(.menu)
+            .frame(width: 110)
+            .labelsHidden()
+          }
+          Divider()
+          HStack {
+            Text("Relax duration")
+            Spacer()
+            Picker("Relax duration", selection: $relaxDuration) {
+              ForEach(relaxDurations, id: \.self) { duration in
+                Text("\(duration) seconds").tag(duration)
+              }
+            }
+            .pickerStyle(.menu)
+            .frame(width: 110)
+            .labelsHidden()
           }
         }
-        .frame(width: 240)
-        Picker("Relax duration", selection: $relaxDuration) {
-          ForEach(relaxDurations, id: \.self) { duration in
-            Text("\(duration) seconds").tag(duration)
-          }
-        }
-        .frame(width: 240)
+        .padding(8)
       }
       .tabItem {
         Label("General", systemImage: "gearshape")
@@ -74,48 +103,70 @@ struct SettingsView: View {
 //      .tabItem {
 //        Label("Sound", systemImage: "speaker.wave.2")
 //      }
-      VStack(alignment: .leading) {
-        Toggle("Automatically check for updates", isOn: $automaticallyChecksForUpdates)
-          .onChange(of: automaticallyChecksForUpdates) { newValue in
-            updater.automaticallyChecksForUpdates = newValue
+      GroupBox {
+        VStack {
+          HStack {
+            Text("Automatically check for updates")
+            Spacer()
+            Toggle("Automatically check for updates", isOn: $automaticallyChecksForUpdates)
+              .onChange(of: automaticallyChecksForUpdates) { newValue in
+                updater.automaticallyChecksForUpdates = newValue
+              }
+              .toggleStyle(.switch)
+              .labelsHidden()
           }
-        
-        Toggle("Automatically download updates", isOn: $automaticallyDownloadsUpdates)
-          .disabled(!automaticallyChecksForUpdates)
-          .onChange(of: automaticallyDownloadsUpdates) { newValue in
-            updater.automaticallyDownloadsUpdates = newValue
+          Divider()
+          HStack {
+            Text("Automatically download updates")
+            Spacer()
+            Toggle("Automatically download updates", isOn: $automaticallyDownloadsUpdates)
+              .disabled(!automaticallyChecksForUpdates)
+              .onChange(of: automaticallyDownloadsUpdates) { newValue in
+                updater.automaticallyDownloadsUpdates = newValue
+              }
+              .toggleStyle(.switch)
+              .labelsHidden()
           }
-        HStack {
-          Spacer()
-          Button {
-            updater.checkForUpdates()
-          } label: {
-            Text("Check for Updates")
+          Divider()
+          HStack {
+            Spacer()
+            Button {
+              updater.checkForUpdates()
+            } label: {
+              Text("Check for Updates")
+            }
+            Spacer()
           }
-          Spacer()
         }
+        .padding(8)
       }
       .tabItem {
         Label("Updates", systemImage: "arrow.triangle.2.circlepath.circle")
       }
       
-      VStack(spacing: 12) {
-        Image("MacAppIcon")
-          .resizable()
-          .scaledToFit()
-          .frame(width: 64, height: 64)
-        Text("Eyes Buddy")
-          .font(.title2)
-          .bold()
-        Text("Version \(appVersion)")
-          .font(.callout)
-        Text("© 2023 Dinh Quang Hieu")
-          .font(.callout)
-        if let url = URL(string: "https://eyesbuddy.app") {
-          Link("eyesbuddy.app", destination: url)
+      GroupBox {
+        HStack {
+          Spacer()
+          VStack(spacing: 12) {
+            Image("MacAppIcon")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 64, height: 64)
+            Text("Eyes Buddy")
+              .font(.title2)
+              .bold()
+            Text("Version \(appVersion)")
+              .font(.callout)
+            Text("© 2023 Dinh Quang Hieu")
+              .font(.callout)
+            if let url = URL(string: "https://eyesbuddy.app") {
+              Link("eyesbuddy.app", destination: url)
+            }
+          }
+          .padding(.bottom)
+          Spacer()
         }
       }
-      .padding(.bottom)
       .tabItem {
         Label("About", systemImage: "info.circle")
       }
