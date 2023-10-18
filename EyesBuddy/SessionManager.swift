@@ -9,6 +9,7 @@ import Foundation
 import AppKit
 import Cocoa
 import SwiftUI
+import TelemetryClient
 
 class SessionManager: ObservableObject {
   
@@ -55,6 +56,10 @@ class SessionManager: ObservableObject {
   }
   
   func startSession() {
+    TelemetryManager.send("startSession", with: [
+      "sessionDuration": "\(sessionDuration)",
+      "relaxDuration": "\(relaxDuration)"
+    ])
     resetRemainingTime()
     sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
   }
@@ -81,6 +86,10 @@ class SessionManager: ObservableObject {
   }
   
   func startRelaxSession() {
+    TelemetryManager.send("startRelaxSession", with: [
+      "sessionDuration": "\(sessionDuration)",
+      "relaxDuration": "\(relaxDuration)"
+    ])
     resetRemainingTime()
     relaxTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(relaxTimerTick), userInfo: nil, repeats: true)
   }
@@ -108,8 +117,12 @@ class SessionManager: ObservableObject {
   
   
   func showReminderWindow() {
+    TelemetryManager.send("showReminderWindow", with: [
+      "sessionDuration": "\(sessionDuration)",
+      "relaxDuration": "\(relaxDuration)",
+      "screenCount": "\(NSScreen.screens.count)"
+    ])
     relaxWindows = []
-    print("🍾 NSScreen.screens.count = \(NSScreen.screens.count)")
     for screen in NSScreen.screens {
       let vc = NSHostingController(rootView: ReminderView(dismissNowAction: { [weak self] in
         self?.dismissReminderWindows()
@@ -148,6 +161,11 @@ class SessionManager: ObservableObject {
   }
   
   func dismissReminderWindows() {
+    TelemetryManager.send("dismissReminderWindows", with: [
+      "sessionDuration": "\(sessionDuration)",
+      "relaxDuration": "\(relaxDuration)",
+      "screenCount": "\(NSScreen.screens.count)"
+    ])
     NSApplication.shared.presentationOptions = []
     
     NSAnimationContext.runAnimationGroup { [weak self] context in
@@ -161,7 +179,7 @@ class SessionManager: ObservableObject {
   }
   
   var isBetaExpired: Bool {
-    let dateString = "2023/10/26"
+    let dateString = "2023/11/01"
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy/MM/dd"
     let date = dateFormatter.date(from: dateString) ?? Date()
