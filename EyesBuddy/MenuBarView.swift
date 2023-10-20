@@ -88,8 +88,13 @@ struct MenuBarView: View {
           task.arguments = [path]
           task.launch()
         }, label: {
-          Image(systemName: "arrow.down.backward.toptrailing.rectangle")
-            .imageScale(.large)
+          if #available(macOS 14, *) {
+            Image(systemName: "arrow.down.backward.toptrailing.rectangle")
+              .imageScale(.large)
+          } else {
+            Image(systemName: "arrow.down.backward.square")
+              .imageScale(.large)
+          }
         })
         .buttonStyle(PlainButtonStyle())
         if #available(macOS 14.0, *) {
@@ -98,7 +103,6 @@ struct MenuBarView: View {
               .imageScale(.large)
           }
           .keyboardShortcut(",", modifiers: .command)
-          
           .buttonStyle(PlainButtonStyle())
         } else {
           Button(action: {
