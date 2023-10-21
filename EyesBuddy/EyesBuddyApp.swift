@@ -17,8 +17,11 @@ struct EyesBuddyApp: App {
   @AppStorage("autoStartSessionWhenLaunch") var autoStartSessionWhenLaunch = false
   
   private let updaterController: SPUStandardUpdaterController
+  let detector = MouseActivityDetector.shared
+  
   
   init() {
+    
     // If you want to start the updater manually, pass false to startingUpdater and call .startUpdater() later
     // This is where you can also pass an updater delegate if you need one
     updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
@@ -60,12 +63,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
   
   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+    MouseActivityDetector.shared.stopMonitoring()
+    MouseActivityDetector.shared.startGlobalMonitor()
     NSApp.setActivationPolicy(.accessory)
     return false
   }
   
   func applicationWillFinishLaunching(_ notification: Notification) {
     NSWindow.allowsAutomaticWindowTabbing = false
+  }
+  
+  func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+    MouseActivityDetector.shared.stopMonitoring()
+    MouseActivityDetector.shared.startLocalMonitor()
+    return true
   }
   
 }

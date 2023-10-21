@@ -14,6 +14,7 @@ struct SettingsView: View {
   @AppStorage("autoRestartSessionWhenUnlock") var autoRestartSessionWhenUnlock = true
   @AppStorage("sessionDuration") var sessionDuration = 20 // minutes
   @AppStorage("relaxDuration") var relaxDuration = 20 // seconds
+  @AppStorage("inactiveDuration") var inactiveDuration = 5 // minutes
   
   let sessionManager = SessionManager.shared
   
@@ -33,6 +34,10 @@ struct SettingsView: View {
     return [20, 30, 45, 60]
     #endif
     return [10, 20, 30, 45, 60]
+  }
+  
+  var inactiveDurations: [Int] {
+    return [1, 2, 3, 5, 10]
   }
   
   init(updater: SPUUpdater) {
@@ -59,6 +64,23 @@ struct SettingsView: View {
             Toggle("Restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
               .toggleStyle(.switch)
               .labelsHidden()
+          }
+          Divider()
+          HStack {
+            Text("Stop session when inactive")
+            Spacer()
+            Picker("Stop session when inactive", selection: $inactiveDuration) {
+              ForEach(inactiveDurations, id: \.self) { duration in
+                if duration == 1 {
+                  Text("For \(duration) minute").tag(duration)
+                } else {
+                  Text("For \(duration) minutes").tag(duration)
+                }
+              }
+            }
+            .pickerStyle(.menu)
+            .frame(width: 120)
+            .labelsHidden()
           }
           Divider()
           HStack {
@@ -187,14 +209,6 @@ struct SettingsView: View {
         }, label: {
           Text("Show reminder")
         })
-        Button {
-          // we use -n to open a new instance, to avoid calling applicationShouldHandleReopen
-          // we use Bundle.main.bundlePath in case of multiple AltTab versions on the machine
-          Process.launchedProcess(launchPath: "/usr/bin/open", arguments: ["-n", Bundle.main.bundlePath])
-          NSApplication.shared.terminate(self)
-        } label: {
-          Text("Reset settings")
-        }
         
       }
       .tabItem {
