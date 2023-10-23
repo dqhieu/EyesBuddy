@@ -11,11 +11,18 @@ import Cocoa
 import SwiftUI
 import TelemetryClient
 
+enum SessionState {
+  case started
+  case paused
+  case idle
+}
+
 class SessionManager: ObservableObject {
   
   @Published var sessionTimer: Timer?
   @Published var remainingSessionTime = 60 * 20
   @Published var remainingSessionTimeString: String = "20:00"
+  @Published var sessionState: SessionState = .idle
   
   @Published var relaxTimer: Timer?
   @Published var remainingRelaxTime = 20
@@ -62,6 +69,7 @@ class SessionManager: ObservableObject {
     ])
     resetRemainingTime()
     sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
+    sessionState = .started
   }
   
   @objc func sessionTimerTick() {
@@ -74,7 +82,19 @@ class SessionManager: ObservableObject {
     }
   }
   
+  func pauseSession() {
+    sessionState = .paused
+    sessionTimer?.invalidate()
+    sessionTimer = nil
+  }
+  
+  func resumeSession() {
+    sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
+    sessionState = .started
+  }
+  
   func stopSession() {
+    sessionState = .idle
     sessionTimer?.invalidate()
     sessionTimer = nil
     resetRemainingTime()

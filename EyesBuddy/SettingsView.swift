@@ -15,6 +15,7 @@ struct SettingsView: View {
   @AppStorage("sessionDuration") var sessionDuration = 20 // minutes
   @AppStorage("relaxDuration") var relaxDuration = 20 // seconds
   @AppStorage("inactiveDuration") var inactiveDuration = 5 // minutes
+  @AppStorage("inactiveResumeType") var inactiveResumeType = 0
   
   let sessionManager = SessionManager.shared
   
@@ -37,7 +38,7 @@ struct SettingsView: View {
   }
   
   var inactiveDurations: [Int] {
-    return [1, 2, 3, 5, 10]
+    return [0, 1, 2, 3, 5, 10]
   }
   
   init(updater: SPUUpdater) {
@@ -67,11 +68,13 @@ struct SettingsView: View {
           }
           Divider()
           HStack {
-            Text("Stop session when inactive")
+            Text("Stop session when mouse is inactive")
             Spacer()
-            Picker("Stop session when inactive", selection: $inactiveDuration) {
+            Picker("Stop session when mouse is inactive", selection: $inactiveDuration) {
               ForEach(inactiveDurations, id: \.self) { duration in
-                if duration == 1 {
+                if duration == 0 {
+                  Text("None").tag(duration)
+                } else if duration == 1 {
                   Text("For \(duration) minute").tag(duration)
                 } else {
                   Text("For \(duration) minutes").tag(duration)
@@ -81,6 +84,19 @@ struct SettingsView: View {
             .pickerStyle(.menu)
             .frame(width: 120)
             .labelsHidden()
+          }
+          if inactiveDuration > 0 {
+            HStack {
+              Text("When resume from inactivity")
+              Spacer()
+              Picker("Stop session when mouse is inactive", selection: $inactiveResumeType) {
+                Text("Restart session").tag(0)
+                Text("Continue session").tag(1)
+              }
+              .pickerStyle(.menu)
+              .frame(width: 140)
+              .labelsHidden()
+            }
           }
           Divider()
           HStack {
@@ -217,7 +233,7 @@ struct SettingsView: View {
 #endif
     }
     .padding()
-    .frame(width: 400)
+    .frame(width: 440)
   }
   
   var appVersion: String {

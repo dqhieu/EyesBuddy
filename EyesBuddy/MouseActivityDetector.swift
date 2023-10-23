@@ -12,10 +12,12 @@ import SwiftUI
 class MouseActivityDetector: NSObject {
   
   @AppStorage("inactiveDuration") var inactiveDuration = 5 // minutes
+  @AppStorage("inactiveResumeType") var inactiveResumeType = 0 // 0 restart, 1 continue
   
   var timer: Timer?
   var lastMouseMovedTime: Date?
   var shouldRestartSession = false
+  var shouldResumeSession = false
   var monitor: Any?
   
   static let shared = MouseActivityDetector()
@@ -26,8 +28,9 @@ class MouseActivityDetector: NSObject {
   }
   
   func startGlobalMonitor() {
+    guard inactiveDuration > 0 else { return }
 //    print("🍾 startGlobalMonitor")
-    monitor = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved]) { [weak self] event in
+    monitor = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved, .leftMouseDown, .leftMouseUp]) { [weak self] event in
       self?.lastMouseMovedTime = Date()
       self?.restartSessionIfNeeded()
       self?.resetTimer()
@@ -35,8 +38,9 @@ class MouseActivityDetector: NSObject {
   }
   
   func startLocalMonitor() {
+    guard inactiveDuration > 0 else { return }
 //    print("🍾 startLocalMonitor")
-    monitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) { [weak self] event in
+    monitor = NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved, .leftMouseDown, .leftMouseUp]) { [weak self] event in
       self?.lastMouseMovedTime = Date()
       self?.restartSessionIfNeeded()
       self?.resetTimer()
@@ -58,16 +62,27 @@ class MouseActivityDetector: NSObject {
   }
   
   @objc func mouseDidStopMoving() {
+    guard inactiveDuration > 0 else { return }
 //    print("🍾 Mouse has stopped moving for 5 seconds")
-    SessionManager.shared.stopSession()
-    shouldRestartSession = true
+    if inactiveResumeType == 0 {
+      SessionManager.shared.stopSession()
+      shouldRestartSession = true
+    } else if inactiveResumeType == 1 {
+      SessionManager.shared.pauseSession()
+      shouldResumeSession = true
+    }
+    
   }
   
   func restartSessionIfNeeded() {
+    guard inactiveDuration > 0 else { return }
     if shouldRestartSession {
 //      print("🍾 startSession")
       SessionManager.shared.startSession()
+    } else if shouldResumeSession {
+      SessionManager.shared.resumeSession()
     }
     shouldRestartSession = false
+    shouldResumeSession = false
   }
 }

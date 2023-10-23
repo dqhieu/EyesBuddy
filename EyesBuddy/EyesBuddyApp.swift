@@ -27,7 +27,7 @@ struct EyesBuddyApp: App {
     updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
     let configuration = TelemetryManagerConfiguration(appID: "2E6FCBEB-E2B0-4675-81D6-E74BF1ECB09E")
     TelemetryManager.initialize(with: configuration)
-    if autoStartSessionWhenLaunch, SessionManager.shared.sessionTimer == nil {
+    if autoStartSessionWhenLaunch, SessionManager.shared.sessionState == .idle {
       SessionManager.shared.startSession()
     }
   }

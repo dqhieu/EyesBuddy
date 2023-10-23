@@ -18,7 +18,7 @@ struct HomeView: View {
   var body: some View {
     VStack(spacing: 8) {
       HStack {
-        if sessionManager.sessionTimer != nil {
+        if sessionManager.sessionState != .idle {
           Text(sessionManager.remainingSessionTimeString)
             .font(.largeTitle)
             .fontDesign(.rounded)
