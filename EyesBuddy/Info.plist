@@ -2,16 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SUEnableInstallerLauncherService</key>
-	<true/>
 	<key>SUFeedURL</key>
 	<string>https://eyesbuddy.app/archives/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>T9aDbtANF0yr9ZMLWC98FVvzQiAmkIPy/JggQKIEvl0=</string>
-	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
-	<array>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)-spks</string>
-		<string>$(PRODUCT_BUNDLE_IDENTIFIER)-spki</string>
-	</array>
 </dict>
 </plist>
