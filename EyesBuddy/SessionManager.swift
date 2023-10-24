@@ -19,7 +19,7 @@ enum SessionState {
 
 class SessionManager: ObservableObject {
   
-  @Published var sessionTimer: Timer?
+  private var sessionTimer: Timer?
   @Published var remainingSessionTime = 60 * 20
   @Published var remainingSessionTimeString: String = "20:00"
   @Published var sessionState: SessionState = .idle
@@ -68,6 +68,7 @@ class SessionManager: ObservableObject {
       "relaxDuration": "\(relaxDuration)"
     ])
     resetRemainingTime()
+    sessionTimer?.invalidate()
     sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
     sessionState = .started
   }
@@ -89,6 +90,7 @@ class SessionManager: ObservableObject {
   }
   
   func resumeSession() {
+    sessionTimer?.invalidate()
     sessionTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(sessionTimerTick), userInfo: nil, repeats: true)
     sessionState = .started
   }
@@ -111,6 +113,7 @@ class SessionManager: ObservableObject {
       "relaxDuration": "\(relaxDuration)"
     ])
     resetRemainingTime()
+    relaxTimer?.invalidate()
     relaxTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(relaxTimerTick), userInfo: nil, repeats: true)
   }
   
