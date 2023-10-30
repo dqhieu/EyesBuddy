@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471DE3E42AEFF37000485C1D /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E32AEFF37000485C1D /* GeneralSettingsView.swift */; };
+		471DE3E72AEFF49E00485C1D /* UpdateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E62AEFF49E00485C1D /* UpdateSettingsView.swift */; };
+		471DE3E92AEFF62500485C1D /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */; };
 		4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 4732870B2AD4CE4300C13ADE /* TelemetryClient */; };
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
 		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
 		476A76AA2AE236330044F8CC /* MouseActivityDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A76A92AE236330044F8CC /* MouseActivityDetector.swift */; };
 		4780CC6D2AD4233A00178571 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780CC6C2AD4233A00178571 /* SettingsView.swift */; };
+		479C108B2AE80FBE00ED31C5 /* LicenseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479C108A2AE80FBE00ED31C5 /* LicenseManager.swift */; };
+		479C108D2AE8A1CC00ED31C5 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479C108C2AE8A1CC00ED31C5 /* LicenseView.swift */; };
 		47DF13872AD27FC200C5140D /* EyesBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */; };
 		47DF138B2AD27FC300C5140D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47DF138A2AD27FC300C5140D /* Assets.xcassets */; };
 		47DF138E2AD27FC300C5140D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47DF138D2AD27FC300C5140D /* Preview Assets.xcassets */; };
@@ -22,10 +27,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		471DE3E32AEFF37000485C1D /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		471DE3E62AEFF49E00485C1D /* UpdateSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSettingsView.swift; sourceTree = "<group>"; };
+		471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingsView.swift; sourceTree = "<group>"; };
 		476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
 		476881D52AD2FD61000990AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		476A76A92AE236330044F8CC /* MouseActivityDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseActivityDetector.swift; sourceTree = "<group>"; };
 		4780CC6C2AD4233A00178571 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		479C108A2AE80FBE00ED31C5 /* LicenseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseManager.swift; sourceTree = "<group>"; };
+		479C108C2AE8A1CC00ED31C5 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		47DF13832AD27FC200C5140D /* Eyes Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47DF13862AD27FC200C5140D /* EyesBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyesBuddyApp.swift; sourceTree = "<group>"; };
 		47DF138A2AD27FC300C5140D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +60,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		471DE3E52AEFF48500485C1D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				479C108C2AE8A1CC00ED31C5 /* LicenseView.swift */,
+				4780CC6C2AD4233A00178571 /* SettingsView.swift */,
+				471DE3E32AEFF37000485C1D /* GeneralSettingsView.swift */,
+				471DE3E62AEFF49E00485C1D /* UpdateSettingsView.swift */,
+				471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		47DF137A2AD27FC200C5140D = {
 			isa = PBXGroup;
 			children = (
@@ -75,9 +97,10 @@
 				47DF13972AD2801700C5140D /* SessionManager.swift */,
 				47DF13992AD2802C00C5140D /* HomeView.swift */,
 				47DF139E2AD2829B00C5140D /* MenuBarView.swift */,
-				4780CC6C2AD4233A00178571 /* SettingsView.swift */,
 				476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */,
 				476A76A92AE236330044F8CC /* MouseActivityDetector.swift */,
+				479C108A2AE80FBE00ED31C5 /* LicenseManager.swift */,
+				471DE3E52AEFF48500485C1D /* Settings */,
 				47DF138A2AD27FC300C5140D /* Assets.xcassets */,
 				47DF138F2AD27FC300C5140D /* EyesBuddy.entitlements */,
 				47DF138C2AD27FC300C5140D /* Preview Content */,
@@ -173,11 +196,16 @@
 			files = (
 				4780CC6D2AD4233A00178571 /* SettingsView.swift in Sources */,
 				47DF13872AD27FC200C5140D /* EyesBuddyApp.swift in Sources */,
+				471DE3E92AEFF62500485C1D /* AboutSettingsView.swift in Sources */,
 				47DF13982AD2801700C5140D /* SessionManager.swift in Sources */,
 				47DF139F2AD2829B00C5140D /* MenuBarView.swift in Sources */,
+				471DE3E42AEFF37000485C1D /* GeneralSettingsView.swift in Sources */,
+				479C108B2AE80FBE00ED31C5 /* LicenseManager.swift in Sources */,
 				47DF139A2AD2802C00C5140D /* HomeView.swift in Sources */,
 				476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */,
 				476A76AA2AE236330044F8CC /* MouseActivityDetector.swift in Sources */,
+				479C108D2AE8A1CC00ED31C5 /* LicenseView.swift in Sources */,
+				471DE3E72AEFF49E00485C1D /* UpdateSettingsView.swift in Sources */,
 				47DF13962AD2800400C5140D /* ReminderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

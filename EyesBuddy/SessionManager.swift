@@ -63,6 +63,7 @@ class SessionManager: ObservableObject {
   }
   
   func startSession() {
+    if isBetaExpired { return }
     TelemetryManager.send("startSession", with: [
       "sessionDuration": "\(sessionDuration)",
       "relaxDuration": "\(relaxDuration)"
@@ -202,7 +203,7 @@ class SessionManager: ObservableObject {
   }
   
   var isBetaExpired: Bool {
-    let dateString = "2023/11/01"
+    let dateString = "2023/11/07"
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy/MM/dd"
     let date = dateFormatter.date(from: dateString) ?? Date()

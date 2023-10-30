@@ -121,6 +121,16 @@ struct HomeView: View {
     .padding()
     .frame(width: 180)
     .fontDesign(.rounded)
+//    .task {
+//      do {
+//        let isValid = try await LicenseManager.shared.validate()
+//        if !isValid {
+//          showAlert = true
+//        }
+//      } catch {
+//        
+//      }
+//    }
   }
 }
 
