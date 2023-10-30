@@ -10,7 +10,6 @@
 		471DE3E42AEFF37000485C1D /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E32AEFF37000485C1D /* GeneralSettingsView.swift */; };
 		471DE3E72AEFF49E00485C1D /* UpdateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E62AEFF49E00485C1D /* UpdateSettingsView.swift */; };
 		471DE3E92AEFF62500485C1D /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */; };
-		471DE3EC2AEFF74200485C1D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 471DE3EB2AEFF74200485C1D /* LaunchAtLogin */; };
 		471DE3EF2AEFFA0D00485C1D /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 471DE3EE2AEFFA0D00485C1D /* SettingsAccess */; };
 		4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 4732870B2AD4CE4300C13ADE /* TelemetryClient */; };
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
@@ -54,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				471DE3EC2AEFF74200485C1D /* LaunchAtLogin in Frameworks */,
 				471DE3EF2AEFFA0D00485C1D /* SettingsAccess in Frameworks */,
 				476881D22AD2FBEE000990AF /* Sparkle in Frameworks */,
 				4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */,
@@ -139,7 +137,6 @@
 			packageProductDependencies = (
 				476881D12AD2FBEE000990AF /* Sparkle */,
 				4732870B2AD4CE4300C13ADE /* TelemetryClient */,
-				471DE3EB2AEFF74200485C1D /* LaunchAtLogin */,
 				471DE3EE2AEFFA0D00485C1D /* SettingsAccess */,
 			);
 			productName = EyesBuddy;
@@ -173,7 +170,6 @@
 			packageReferences = (
 				476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */,
 				4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */,
-				471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 				471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */,
 			);
 			productRefGroup = 47DF13842AD27FC200C5140D /* Products */;
@@ -347,7 +343,7 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -379,7 +375,7 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -427,14 +423,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/SettingsAccess";
@@ -462,11 +450,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		471DE3EB2AEFF74200485C1D /* LaunchAtLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
-			productName = LaunchAtLogin;
-		};
 		471DE3EE2AEFFA0D00485C1D /* SettingsAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */;

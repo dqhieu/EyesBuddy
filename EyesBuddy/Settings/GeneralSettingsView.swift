@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import LaunchAtLogin
 
 struct GeneralSettingsView: View {
   
@@ -37,7 +36,6 @@ struct GeneralSettingsView: View {
   
   var body: some View {
     Form {
-      LaunchAtLogin.Toggle()
       Toggle("Start session when app is opened", isOn: $autoStartSessionWhenLaunch)
         .toggleStyle(.switch)
       Toggle("Restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
