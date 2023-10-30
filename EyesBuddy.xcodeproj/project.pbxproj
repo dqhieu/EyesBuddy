@@ -11,6 +11,7 @@
 		471DE3E72AEFF49E00485C1D /* UpdateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E62AEFF49E00485C1D /* UpdateSettingsView.swift */; };
 		471DE3E92AEFF62500485C1D /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */; };
 		471DE3EC2AEFF74200485C1D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 471DE3EB2AEFF74200485C1D /* LaunchAtLogin */; };
+		471DE3EF2AEFFA0D00485C1D /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 471DE3EE2AEFFA0D00485C1D /* SettingsAccess */; };
 		4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 4732870B2AD4CE4300C13ADE /* TelemetryClient */; };
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
 		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
@@ -54,6 +55,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				471DE3EC2AEFF74200485C1D /* LaunchAtLogin in Frameworks */,
+				471DE3EF2AEFFA0D00485C1D /* SettingsAccess in Frameworks */,
 				476881D22AD2FBEE000990AF /* Sparkle in Frameworks */,
 				4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */,
 			);
@@ -138,6 +140,7 @@
 				476881D12AD2FBEE000990AF /* Sparkle */,
 				4732870B2AD4CE4300C13ADE /* TelemetryClient */,
 				471DE3EB2AEFF74200485C1D /* LaunchAtLogin */,
+				471DE3EE2AEFFA0D00485C1D /* SettingsAccess */,
 			);
 			productName = EyesBuddy;
 			productReference = 47DF13832AD27FC200C5140D /* Eyes Buddy.app */;
@@ -171,6 +174,7 @@
 				476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */,
 				4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */,
 				471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */,
 			);
 			productRefGroup = 47DF13842AD27FC200C5140D /* Products */;
 			projectDirPath = "";
@@ -431,6 +435,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/SettingsAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
 		4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TelemetryDeck/SwiftClient";
@@ -454,6 +466,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
 			productName = LaunchAtLogin;
+		};
+		471DE3EE2AEFFA0D00485C1D /* SettingsAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */;
+			productName = SettingsAccess;
 		};
 		4732870B2AD4CE4300C13ADE /* TelemetryClient */ = {
 			isa = XCSwiftPackageProductDependency;

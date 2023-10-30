@@ -8,6 +8,7 @@
 import SwiftUI
 import Sparkle
 import TelemetryClient
+import SettingsAccess
 
 @main
 struct EyesBuddyApp: App {
@@ -35,6 +36,7 @@ struct EyesBuddyApp: App {
   var body: some Scene {
     WindowGroup {
       HomeView()
+        .openSettingsAccess()
     }
     .windowStyle(.hiddenTitleBar)
     .windowResizability(.contentSize)
@@ -46,6 +48,7 @@ struct EyesBuddyApp: App {
     }
     MenuBarExtra {
       MenuBarView()
+        .openSettingsAccess()
     } label: {
       Label("MyApp", systemImage: "eyes")
     }
@@ -74,6 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
   
   func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+    NSApp.setActivationPolicy(.regular)
     MouseActivityDetector.shared.stopMonitoring()
     MouseActivityDetector.shared.startLocalMonitor()
     return true

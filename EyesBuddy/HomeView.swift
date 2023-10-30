@@ -8,9 +8,11 @@
 import SwiftUI
 import AppKit
 import Sparkle
+import SettingsAccess
 
 struct HomeView: View {
   
+  @Environment(\.openSettings) private var openSettings
   @ObservedObject var sessionManager = SessionManager.shared
   @Namespace var namespace
   @State var showAlert = false
@@ -79,34 +81,13 @@ struct HomeView: View {
       .padding(8)
       .background(in: .rect(cornerRadius: 24, style: .continuous))
       HStack {
-        if #available(macOS 14.0, *) {
-          SettingsLink{
-            Image(systemName: "gearshape")
-              .imageScale(.large)
-          }
-          .keyboardShortcut(",", modifiers: .command)
-          
-          .buttonStyle(PlainButtonStyle())
-        } else {
-          Button(action: {
-            //          let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
-            //          let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
-            //          let task = Process()
-            //          task.launchPath = "/usr/bin/open"
-            //          task.arguments = [path]
-            //          task.launch()
-            if #available(macOS 13, *) {
-              NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-            } else {
-              NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-            }
-            
-          }, label: {
-            Image(systemName: "gearshape")
-              .imageScale(.large)
-          })
-          .buttonStyle(PlainButtonStyle())
-        }
+        Button(action: {
+          try? openSettings()
+        }, label: {
+          Image(systemName: "gearshape")
+            .imageScale(.large)
+        })
+        .buttonStyle(PlainButtonStyle())
         Spacer()
         Button(action: {
           NSApplication.shared.terminate(nil)
