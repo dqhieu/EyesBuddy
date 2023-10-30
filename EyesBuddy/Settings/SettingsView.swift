@@ -9,36 +9,9 @@ import SwiftUI
 import Sparkle
 
 struct SettingsView: View {
-  
-  @AppStorage("autoStartSessionWhenLaunch") var autoStartSessionWhenLaunch = false
-  @AppStorage("autoRestartSessionWhenUnlock") var autoRestartSessionWhenUnlock = true
-  @AppStorage("sessionDuration") var sessionDuration = 20 // minutes
-  @AppStorage("relaxDuration") var relaxDuration = 20 // seconds
-  @AppStorage("inactiveDuration") var inactiveDuration = 5 // minutes
-  @AppStorage("inactiveResumeType") var inactiveResumeType = 0
-  
-  let sessionManager = SessionManager.shared
-  
+    
   private let updater: SPUUpdater
-  
-  var sessionDurations: [Int] {
-    #if DEBUG
-    return [1, 10, 20, 30, 45, 60]
-    #endif
-    return [10, 20, 30, 45, 60]
-  }
-  
-  var relaxDurations: [Int] {
-    #if DEBUG
-    return [20, 30, 45, 60]
-    #endif
-    return [10, 20, 30, 45, 60]
-  }
-  
-  var inactiveDurations: [Int] {
-    return [0, 1, 2, 3, 5, 10]
-  }
-  
+    
   init(updater: SPUUpdater) {
     self.updater = updater
   }

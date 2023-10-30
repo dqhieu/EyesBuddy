@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LaunchAtLogin
 
 struct GeneralSettingsView: View {
   
@@ -36,6 +37,7 @@ struct GeneralSettingsView: View {
   
   var body: some View {
     Form {
+      LaunchAtLogin.Toggle()
       Toggle("Start session when app is opened", isOn: $autoStartSessionWhenLaunch)
         .toggleStyle(.switch)
       Toggle("Restart session when screen is unlocked", isOn: $autoRestartSessionWhenUnlock)
@@ -73,7 +75,7 @@ struct GeneralSettingsView: View {
       .pickerStyle(.menu)
     }
     .formStyle(.grouped)
-    .frame(width: 440, height: 260)
+    .frame(width: 440, height: 300)
     .scrollDisabled(true)
   }
 }

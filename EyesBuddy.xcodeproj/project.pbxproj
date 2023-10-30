@@ -10,6 +10,7 @@
 		471DE3E42AEFF37000485C1D /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E32AEFF37000485C1D /* GeneralSettingsView.swift */; };
 		471DE3E72AEFF49E00485C1D /* UpdateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E62AEFF49E00485C1D /* UpdateSettingsView.swift */; };
 		471DE3E92AEFF62500485C1D /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */; };
+		471DE3EC2AEFF74200485C1D /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 471DE3EB2AEFF74200485C1D /* LaunchAtLogin */; };
 		4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 4732870B2AD4CE4300C13ADE /* TelemetryClient */; };
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
 		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				471DE3EC2AEFF74200485C1D /* LaunchAtLogin in Frameworks */,
 				476881D22AD2FBEE000990AF /* Sparkle in Frameworks */,
 				4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */,
 			);
@@ -135,6 +137,7 @@
 			packageProductDependencies = (
 				476881D12AD2FBEE000990AF /* Sparkle */,
 				4732870B2AD4CE4300C13ADE /* TelemetryClient */,
+				471DE3EB2AEFF74200485C1D /* LaunchAtLogin */,
 			);
 			productName = EyesBuddy;
 			productReference = 47DF13832AD27FC200C5140D /* Eyes Buddy.app */;
@@ -167,6 +170,7 @@
 			packageReferences = (
 				476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */,
 				4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */,
+				471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = 47DF13842AD27FC200C5140D /* Products */;
 			projectDirPath = "";
@@ -339,7 +343,7 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -354,7 +358,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.7;
+				MARKETING_VERSION = 0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
 				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -371,7 +375,7 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -386,7 +390,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.7;
+				MARKETING_VERSION = 0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
 				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -419,6 +423,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TelemetryDeck/SwiftClient";
@@ -438,6 +450,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		471DE3EB2AEFF74200485C1D /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 471DE3EA2AEFF74200485C1D /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
 		4732870B2AD4CE4300C13ADE /* TelemetryClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */;
