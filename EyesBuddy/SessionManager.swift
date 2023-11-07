@@ -203,7 +203,7 @@ class SessionManager: ObservableObject {
   }
   
   var isBetaExpired: Bool {
-    let dateString = "2023/11/31"
+    let dateString = "2023/11/30"
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy/MM/dd"
     let date = dateFormatter.date(from: dateString) ?? Date()
