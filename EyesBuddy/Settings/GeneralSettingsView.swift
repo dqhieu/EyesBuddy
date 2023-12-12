@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LaunchAtLogin
 
 struct GeneralSettingsView: View {
   
@@ -53,7 +54,7 @@ struct GeneralSettingsView: View {
       }
       .pickerStyle(.menu)
       if inactiveDuration > 0 {
-        Picker("Stop session when mouse is inactive", selection: $inactiveResumeType) {
+        Picker("When resume from inactivity", selection: $inactiveResumeType) {
           Text("Restart session").tag(0)
           Text("Continue session").tag(1)
         }
@@ -71,6 +72,7 @@ struct GeneralSettingsView: View {
         }
       }
       .pickerStyle(.menu)
+      LaunchAtLogin.Toggle()
     }
     .formStyle(.grouped)
     .frame(width: 440, height: 300)

@@ -12,6 +12,7 @@
 		471DE3E92AEFF62500485C1D /* AboutSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471DE3E82AEFF62500485C1D /* AboutSettingsView.swift */; };
 		471DE3EF2AEFFA0D00485C1D /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 471DE3EE2AEFFA0D00485C1D /* SettingsAccess */; };
 		4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */ = {isa = PBXBuildFile; productRef = 4732870B2AD4CE4300C13ADE /* TelemetryClient */; };
+		4747A2472B28D4FE00BF47CD /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4747A2462B28D4FE00BF47CD /* LaunchAtLogin */; };
 		476881D22AD2FBEE000990AF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 476881D12AD2FBEE000990AF /* Sparkle */; };
 		476881D42AD2FC2E000990AF /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476881D32AD2FC2E000990AF /* CheckForUpdatesView.swift */; };
 		476A76AA2AE236330044F8CC /* MouseActivityDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A76A92AE236330044F8CC /* MouseActivityDetector.swift */; };
@@ -55,6 +56,7 @@
 			files = (
 				471DE3EF2AEFFA0D00485C1D /* SettingsAccess in Frameworks */,
 				476881D22AD2FBEE000990AF /* Sparkle in Frameworks */,
+				4747A2472B28D4FE00BF47CD /* LaunchAtLogin in Frameworks */,
 				4732870C2AD4CE4300C13ADE /* TelemetryClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +140,7 @@
 				476881D12AD2FBEE000990AF /* Sparkle */,
 				4732870B2AD4CE4300C13ADE /* TelemetryClient */,
 				471DE3EE2AEFFA0D00485C1D /* SettingsAccess */,
+				4747A2462B28D4FE00BF47CD /* LaunchAtLogin */,
 			);
 			productName = EyesBuddy;
 			productReference = 47DF13832AD27FC200C5140D /* Eyes Buddy.app */;
@@ -151,7 +154,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					47DF13822AD27FC200C5140D = {
 						CreatedOnToolsVersion = 15.0;
@@ -171,6 +174,7 @@
 				476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */,
 				4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */,
 				471DE3ED2AEFFA0D00485C1D /* XCRemoteSwiftPackageReference "SettingsAccess" */,
+				4747A2452B28D4FE00BF47CD /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 			);
 			productRefGroup = 47DF13842AD27FC200C5140D /* Products */;
 			projectDirPath = "";
@@ -251,6 +255,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -314,6 +319,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -343,7 +349,8 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -358,7 +365,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.11;
+				MARKETING_VERSION = 0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
 				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -375,7 +382,8 @@
 				CODE_SIGN_ENTITLEMENTS = EyesBuddy/EyesBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"EyesBuddy/Preview Content\"";
 				DEVELOPMENT_TEAM = BH46VD9229;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -390,7 +398,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.11;
+				MARKETING_VERSION = 0.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hieudinh.EyesBuddy;
 				PRODUCT_NAME = "Eyes Buddy";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -439,6 +447,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		4747A2452B28D4FE00BF47CD /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		476881D02AD2FBEE000990AF /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
@@ -459,6 +475,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4732870A2AD4CE4300C13ADE /* XCRemoteSwiftPackageReference "SwiftClient" */;
 			productName = TelemetryClient;
+		};
+		4747A2462B28D4FE00BF47CD /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4747A2452B28D4FE00BF47CD /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
 		};
 		476881D12AD2FBEE000990AF /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
