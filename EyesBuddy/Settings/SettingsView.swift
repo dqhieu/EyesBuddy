@@ -37,16 +37,6 @@ struct SettingsView: View {
       .tabItem {
         Label("Updates", systemImage: "arrow.triangle.2.circlepath.circle")
       }
-      
-//      GroupBox {
-//        LicenseView()
-//        .padding(8)
-//      }
-//      .tabItem {
-//        Label("License", systemImage: "key.viewfinder")
-//      }
-      
-      
       AboutSettingsView()
       .tabItem {
         Label("About", systemImage: "info.circle")
